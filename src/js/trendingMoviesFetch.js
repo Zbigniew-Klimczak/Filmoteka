@@ -1,8 +1,10 @@
 import { API_KEY } from './apiKey';
 
+export let selectedPage = 1;
+
 const searchParams = new URLSearchParams({
   api_key: API_KEY,
-  page: 1,
+  page: selectedPage,
 });
 
 export async function getTrendingMovies(pageNo) {
