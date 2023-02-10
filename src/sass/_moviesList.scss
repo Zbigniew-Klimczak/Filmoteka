@@ -49,6 +49,9 @@
     &__container {
       padding: 60px 75px 50px 75px;
     }
+    &__list {
+      justify-content: flex-start;
+    }
   }
   .movie {
     flex-basis: calc((100% - 30px * (2 - 1)) / 2);
