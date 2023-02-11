@@ -1,39 +1,25 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-    />
-    <link rel="stylesheet" href="./css/footer.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
 <body>
-    <footer class="footer">
-
+  <footer class="footer">
     <div class="copyright">
-        <p>&copy; 2023 | All Rights Reserved |</p>
-        <p>Developed with 
-            <span > <svg class="copyright__svg" id="copyright_modal"><use
-            href= "../images/icons.svg#heart">   </use> </svg> </span> by GoIT Students</p>
-      </div>
+      <p>&copy; 2023 | All Rights Reserved |</p>
+      <p>
+        Developed with
 
+        <svg class="copyright__svg" id="copyright_modal">
+          <use href="./images/icons.svg#heart"></use>
+        </svg>
 
-</footer>
+        by <span class="copyright__span">GoIT Students</span>
+      </p>
+    </div>
+  </footer>
 
-<div class="modal__hidden" data-modal>
-    <div >
+  <div class="modal modal__hidden" data-modal>
+    <div>
       <button type="button" data-modal-close>
-        <svg >
+        <svg>
           <use
-            xlink:href="../images/icons.svg.svg#x"
+            xlink:href="./images/icons.svg#x"
             width="11px"
             height="11px"
             x="3"
@@ -41,12 +27,8 @@
           ></use>
         </svg>
       </button>
-     
     </div>
   </div>
 
-<script src="./js/footer_modal.js"></script>
+  <script src="./js/footerModal.js"></script>
 </body>
-</html>
-
-
