@@ -21,6 +21,16 @@ searchBtn.addEventListener('click', event => {
     query: searchInput.value,
     include_adult: false,
   }).then(response => {
+    if (response.total_results === 0) {
+      document
+        .querySelector('.header__error')
+        .classList.remove('header__error--hidden');
+    }
+    if (response.total_results > 0) {
+      document
+        .querySelector('.header__error')
+        .classList.add('header__error--hidden');
+    }
     moviesListRender(response.results);
   });
   if (searchInput.value != '') {
