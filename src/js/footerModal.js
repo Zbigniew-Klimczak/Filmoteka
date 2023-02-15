@@ -13,33 +13,29 @@
   }
 })();
 
-
-const loader = document.querySelector("#loader");
-const body = document.querySelector("body");
+const loader = document.querySelector('#loader');
+const body = document.querySelector('body');
 let mouseMoveListener;
 
- const trackMousePosition = () => {
-
-  mouseMoveListener = (event) => {
-body.style.cursor = "none";
+export const trackMousePosition = () => {
+  mouseMoveListener = event => {
+    body.style.cursor = 'none';
     loader.style.left = `${event.clientX}px`;
     loader.style.top = `${event.clientY}px`;
-    loader.style.display = "block";
+    loader.style.display = 'block';
   };
-  document.addEventListener("mousemove", mouseMoveListener);
+  document.addEventListener('mousemove', mouseMoveListener);
 };
-
-
-
-const stopTrackingMousePosition = () => {
-body.style.cursor = "auto";
-  document.removeEventListener("mousemove", mouseMoveListener);
-  loader.style.display = "none";
+export const stopTrackingMousePosition = () => {
+  body.style.cursor = 'auto';
+  document.removeEventListener('mousemove', mouseMoveListener);
+  loader.style.display = 'none';
 };
- { trackMousePosition, stopTrackingMousePosition };
+{
+  trackMousePosition, stopTrackingMousePosition;
+}
 // Właściwe wywołanie funkcji
 // trackMousePosition();
 
 // Wywołanie funkcji zatrzymującej nasłuchiwanie
 // stopTrackingMousePosition();
-
