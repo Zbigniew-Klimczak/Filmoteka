@@ -36,14 +36,19 @@ export const modalMovie = async e => {
   let queueClass = '';
   let watchedText = 'Add to watched';
   let queueText = 'Add to queue';
-  if (watchedList.includes(id)) {
-    watchedClass = 'modal-movie__watched';
-    watchedText = 'Remove from watched';
+  if (watchedList) {
+    if (watchedList.includes(id)) {
+      watchedClass = 'modal-movie__watched';
+      watchedText = 'Remove from watched';
+    }
   }
-  if (queueList.includes(id)) {
-    queueClass = 'modal-movie__queue';
-    queueText = 'Remove from queue';
+  if (queueList) {
+    if (queueList.includes(id)) {
+      queueClass = 'modal-movie__queue';
+      queueText = 'Remove from queue';
+    }
   }
+
   const markup = `
             <div class="modal-movie__container">
                 <img src="https://image.tmdb.org/t/p/w500${
