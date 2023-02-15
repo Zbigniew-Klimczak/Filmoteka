@@ -56,7 +56,6 @@ searchBtn.addEventListener('click', event => {
 });
 pagination.addEventListener('click', evt => {
   evt.preventDefault;
-  window.scrollTo(0, 0);
   if (evt.target.classList.contains('pagination__button')) {
     if (
       evt.target.classList.contains('pagination__button--next') ||
