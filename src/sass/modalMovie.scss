@@ -1,0 +1,227 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  transition: visibility 250ms ease-in-out, opacity 250ms ease-in-out;
+
+  &--is-hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.modal__window {
+  position: relative;
+  width: 100%;
+  min-width: 280px;
+  padding: 48px 20px 40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media screen and (min-width: 768px) {
+    width: 618px;
+    padding: 40px 30px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 882px;
+    padding: 50px 30px 40px;
+  }
+}
+
+.modal__button-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.4);
+    fill: #ff6b01;
+  }
+}
+
+.modal__movie {
+  min-width: 100%;
+  height: 100%;
+}
+
+.modal-movie__container {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  cursor: auto;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.modal-movie__picture {
+  height: 100%;
+  border-radius: 5px;
+
+  @media screen and (min-width: 768px) {
+    width: 264px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 396px;
+  }
+}
+
+.modal-movie__information {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-movie__title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: left;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 30px;
+  }
+}
+
+.modal-movie__table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.modal-table__row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.modal-table__title {
+  width: 108px;
+  min-width: 108px;
+  color: #8c8c8c;
+
+  @media screen and (min-width: 1024px) {
+    width: 152px;
+  }
+}
+
+.modal-table__number {
+  padding: 1px 9px;
+  border-radius: 5px;
+}
+
+.modal-table--orange {
+  background-color: #ff6b01;
+  color: rgb(255, 255, 255);
+}
+
+.modal-table--grey {
+  background-color: #f7f7f7;
+}
+
+.modal-table--uppercase {
+  text-transform: uppercase;
+}
+
+.modal-movie__overview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-movie__description {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.modal-movie__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+.modal-movie__btn {
+  margin: 0;
+  max-width: 125px;
+  min-height: 44px;
+  padding: 14px 9px 12px;
+  border: 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.is-active {
+    background-color: #ff6b01;
+    border: #ff6b01;
+    box-shadow: px 4px 43px rgba(255, 107, 1, 0.6);
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1);
+    border-color: #ff6b01;
+    background-color: #ff6b01;
+    box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media screen and (max-width: 1279px) {
+    width: 125px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 136px;
+  }
+}
+
+.modal-movie__watched {
+  background-color: #ff6b01;
+  border: #ff6b01;
+}
+.modal-movie__queue {
+  background-color: #ff6b01;
+  border: #ff6b01;
+}
