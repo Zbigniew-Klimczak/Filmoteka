@@ -1,6 +1,6 @@
 import { fetchJsonResponse } from './responseJsonFetch';
 import { API_KEY } from './apiKey';
-import { moviesStorage } from './localStorage';
+// import { moviesStorage } from './localStorage';
 
 const overlay = document.querySelector('.overlay');
 const modalWindow = document.querySelector('.modal__window');
