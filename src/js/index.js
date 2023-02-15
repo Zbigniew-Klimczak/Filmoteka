@@ -3,6 +3,7 @@ import { fetchJsonResponse } from './responseJsonFetch';
 import { moviesListRender } from './moviesListRender';
 import { paginationRender, paginationDestroy } from './pagination';
 
+
 const searchBtn = document.querySelector('.search__button');
 const searchInput = document.querySelector('.search__input');
 const pagination = document.querySelector('.pagination');
