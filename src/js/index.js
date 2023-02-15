@@ -26,6 +26,7 @@ window.onload = () => {
 
 searchBtn.addEventListener('click', event => {
   event.preventDefault();
+  actualPage = 1;
   movies.dataset.searchquery = searchInput.value;
   fetchJsonResponse('https://api.themoviedb.org/3/search/movie', {
     api_key: API_KEY,
