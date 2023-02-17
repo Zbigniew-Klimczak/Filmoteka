@@ -1,8 +1,11 @@
 .footer {
+  position: fixed;
   background-color: #f7f7f7;
   padding-top: 28px;
   padding-bottom: 30px;
   min-width: 320px;
+  width: 100%;
+  top: 93%;
 }
 
 .copyright {

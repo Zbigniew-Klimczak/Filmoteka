@@ -3,7 +3,7 @@ import { fetchJsonResponse } from './responseJsonFetch';
 import { moviesListRender } from './moviesListRender';
 import { paginationRender, paginationDestroy } from './pagination';
 import { closeModal, modalMovie } from './modalMovie';
-import {trackMousePosition} from './footerModal';
+import {trackMousePosition, stopTrackingMousePosition} from './footerModal';
 const searchBtn = document.querySelector('.search__button');
 const searchInput = document.querySelector('.search__input');
 const pagination = document.querySelector('.pagination');
@@ -107,3 +107,6 @@ pagination.addEventListener('click', evt => {
 });
 moviesGallery.addEventListener('click', modalMovie);
 closeModal();
+
+trackMousePosition();
+stopTrackingMousePosition();

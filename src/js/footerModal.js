@@ -18,7 +18,7 @@ const loader = document.querySelector("#loader");
 const body = document.querySelector("body");
 let mouseMoveListener;
 
- const trackMousePosition = () => {
+export const trackMousePosition = () => {
 
   mouseMoveListener = (event) => {
 body.style.cursor = "none";
@@ -31,7 +31,7 @@ body.style.cursor = "none";
 
 
 
-const stopTrackingMousePosition = () => {
+export const stopTrackingMousePosition = () => {
 body.style.cursor = "auto";
   document.removeEventListener("mousemove", mouseMoveListener);
   loader.style.display = "none";
