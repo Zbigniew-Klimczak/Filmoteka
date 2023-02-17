@@ -3,6 +3,7 @@ const movies = document.querySelector('.movies');
 const moviesGallery = document.querySelector('.movies__list');
 const watchedBtn = document.querySelector('.watched-button');
 const queueBtn = document.querySelector('.queue-button');
+
 let fetchLibrary = () => {
   moviesGallery.innerHTML = '';
   queueBtn.classList.remove('queue-button--active');
@@ -70,6 +71,7 @@ let fetchQueue = () => {
     );
   });
 };
+fetchLibrary();
 queueBtn.addEventListener('click', fetchQueue);
 watchedBtn.addEventListener('click', fetchLibrary);
 moviesGallery.addEventListener('click', modalMovie);
