@@ -19,7 +19,7 @@ let fetchLibrary = () => {
       api_key: API_KEY,
     }).then(movie => {
       let genres = movie.genres;
-      movieGenres = [];
+      let movieGenres = [];
       for (let i = 0; i < genres.length; i++) {
         movieGenres.push(genres[i].name);
       }
@@ -40,7 +40,7 @@ let fetchQueue = () => {
       api_key: API_KEY,
     }).then(movie => {
       let genres = movie.genres;
-      movieGenres = [];
+      let movieGenres = [];
       for (let i = 0; i < genres.length; i++) {
         movieGenres.push(genres[i].name);
       }
