@@ -3,9 +3,7 @@ import { fetchJsonResponse } from './responseJsonFetch';
 import { moviesListRender } from './moviesListRender';
 import { paginationRender, paginationDestroy } from './pagination';
 import { closeModal, modalMovie } from './modalMovie';
-
-import { trackMousePosition } from './loader';
-import { stopTrackingMousePosition } from './loader';
+import { trackMousePosition, stopTrackingMousePosition } from './loader';
 
 const searchBtn = document.querySelector('.search__button');
 const searchInput = document.querySelector('.search__input');
@@ -17,20 +15,27 @@ let actualPage = 1;
 
 window.onload = () => {
   trackMousePosition();
-  fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
-    api_key: API_KEY,
-    page: actualPage,
-  }).then(response => {
-    stopTrackingMousePosition();
-    paginationDestroy();
-    actualPage = response.page;
-    moviesListRender(response.results);
-    paginationRender(response.page, response.total_pages);
-  });
+  // setTimeout to check loader work
+  setTimeout(() => {
+    // -----------------------------
+    fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
+      api_key: API_KEY,
+      page: actualPage,
+    }).then(response => {
+      stopTrackingMousePosition();
+      paginationDestroy();
+      actualPage = response.page;
+      moviesListRender(response.results);
+      paginationRender(response.page, response.total_pages);
+    });
+    // ----------------------------
+  }, 0);
+  // ------------------------------
 };
 
 searchBtn.addEventListener('click', event => {
   event.preventDefault();
+  trackMousePosition();
   actualPage = 1;
   movies.dataset.searchquery = searchInput.value;
   fetchJsonResponse('https://api.themoviedb.org/3/search/movie', {
@@ -45,6 +50,7 @@ searchBtn.addEventListener('click', event => {
         .querySelector('.header__error')
         .classList.remove('header__error--hidden');
     }
+    stopTrackingMousePosition();
     paginationDestroy();
     actualPage = response.page;
     moviesListRender(response.results);
@@ -62,6 +68,7 @@ searchBtn.addEventListener('click', event => {
 
 pagination.addEventListener('click', evt => {
   evt.preventDefault;
+  trackMousePosition();
   if (evt.target.classList.contains('pagination__button')) {
     if (
       evt.target.classList.contains('pagination__button--next') ||
@@ -80,6 +87,7 @@ pagination.addEventListener('click', evt => {
         api_key: API_KEY,
         page: actualPage,
       }).then(response => {
+        stopTrackingMousePosition();
         paginationDestroy();
         actualPage = response.page;
         moviesListRender(response.results);
@@ -98,6 +106,7 @@ pagination.addEventListener('click', evt => {
             .querySelector('.header__error')
             .classList.remove('header__error--hidden');
         }
+        stopTrackingMousePosition();
         paginationDestroy();
         actualPage = response.page;
         moviesListRender(response.results);

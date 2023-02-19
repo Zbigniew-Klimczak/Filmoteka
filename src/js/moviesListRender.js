@@ -31,7 +31,7 @@ function getMoviesGenres(movie, genresList) {
   return movieGenres;
 }
 
-function displayMovieCard(movie, movieGenres) {
+export function displayMovieCard(movie, movieGenres) {
   let moviePoster;
   if (movie.poster_path === null) {
     moviePoster = 'https://europix.cc/no-poster.png';

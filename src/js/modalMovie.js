@@ -1,6 +1,7 @@
 import { fetchJsonResponse } from './responseJsonFetch';
 import { API_KEY } from './apiKey';
 import { moviesStorage } from './localStorage';
+import { trackMousePosition, stopTrackingMousePosition } from './loader';
 
 const overlay = document.querySelector('.overlay');
 const modalWindow = document.querySelector('.modal__window');
@@ -12,6 +13,7 @@ let btn = {
 };
 
 export const modalMovie = async e => {
+  trackMousePosition();
   if (e.target === e.currentTarget) {
     return;
   }
@@ -49,80 +51,83 @@ export const modalMovie = async e => {
     }
   }
 
+  let moviePoster;
+  if (movie.poster_path === null) {
+    moviePoster = 'https://europix.cc/no-poster.png';
+  } else {
+    moviePoster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  }
+
+  let movieGenresList;
+  if (movie.genres.length === 0) {
+    movieGenresList = ['Unknown'];
+  } else {
+    movieGenresList = movie.genres.map(genre => genre.name).join(', ');
+  }
+
   const markup = `
-            <div class="modal-movie__container">
-                <img src="https://image.tmdb.org/t/p/w500${
-                  movie.poster_path
-                }" alt="Image of movie" class="modal-movie__picture" />
-                <div class="modal-movie__information">
+                <div class="modal-movie__container">
+                  <img src=${moviePoster}
+                    alt="${movie.title} poster." class="modal-movie__picture" />
+                  <div class="modal-movie__information">
                     <h3 class="modal-movie__title">${movie.title}</h3>
                     <table>
-                        <tbody class="modal-movie__table modal-table">
-                            <tr class="modal-table__row">
-                                <td class="modal-table__data modal-table__title">
-                                    Vote/Votes
-                                </td>
-                                <td class="modal-table__data modal-table__information">
-                                    <span class="modal-table__number modal-table--orange">${
-                                      Math.round(movie.vote_average * 10) / 10
-                                    }</span> / 
-                                    <span class="modal-table__number modal-table--grey">${
-                                      movie.vote_count
-                                    }</span>
-                                </td>
-                            </tr>
-                            <tr class="modal-table__row">
-                                <td class="modal-table__data modal-table__title">
-                                    Popularity
-                                </td>
-                                <td class="modal-table__data modal-table__information">
-                                    ${Math.round(movie.popularity * 10) / 10}
-                                </td>
-                            </tr>
-                            <tr class="modal-table__row">
-                                <td class="modal-table__data modal-table__title">
-                                    Original Title
-                                </td>
-                                <td class="modal-table__data modal-table__information modal-table--uppercase">
-                                    ${movie.original_title}
-                                </td>
-                            </tr>
-                            <tr class="modal-table__row">
-                                <td class="modal-table__data modal-table__title">Genre</td>
-                                <td class="modal-table__data modal-table__information">
-                                    ${movie.genres
-                                      .map(genre => genre.name)
-                                      .join(', ')}
-                                </td>
-                            </tr>
-                        </tbody>
+                      <tbody class="modal-movie__table modal-table">
+                        <tr class="modal-table__row">
+                          <td class="modal-table__data modal-table__title">Vote/Votes</td>
+                          <td class="modal-table__data modal-table__information">
+                            <span class="modal-table__number modal-table--orange">
+                              ${Math.round(movie.vote_average * 10) / 10}
+                            </span> / 
+                            <span class="modal-table__number modal-table--grey">
+                              ${movie.vote_count}
+                            </span>
+                          </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                          <td class="modal-table__data modal-table__title">Popularity</td>
+                          <td class="modal-table__data modal-table__information">
+                            ${Math.round(movie.popularity * 10) / 10}
+                          </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                          <td class="modal-table__data modal-table__title">Original Title</td>
+                          <td class="modal-table__data modal-table__information modal-table--uppercase">
+                            ${movie.original_title}
+                          </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                          <td class="modal-table__data modal-table__title">Genre</td>
+                          <td class="modal-table__data modal-table__information">
+                            ${movieGenresList}
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
                     <div class="modal-movie__overview">
-                        <h4 class="modal-movie__about">About</h4>
-                        <p class="modal-movie__description">${
-                          movie.overview
-                        }</p>
+                      <h4 class="modal-movie__about">About</h4>
+                      <p class="modal-movie__description">
+                        ${movie.overview}
+                      </p>
                     </div>
                     <div class="modal-movie__buttons movie-button">
-                        <button
-                            type="button"
-                            class="modal-movie__btn ${watchedClass}"
-                            data-idfilm=""
-                            data-btn="watched"
-                        >
-                            ${watchedText}
-                        </button>
-                        <button
-                            type="button"
-                            class="modal-movie__btn ${queueClass}"
-                            data-idfilm=""
-                            data-btn="queue"
-                        >
-                            ${queueText}
-                        </button>
+                      <button
+                        type="button"
+                        class="modal-movie__btn ${watchedClass}"
+                        data-idfilm=""
+                        data-btn="watched">
+                          ${watchedText}
+                      </button>
+                      <button
+                        type="button"
+                        class="modal-movie__btn ${queueClass}"
+                        data-idfilm=""
+                        data-btn="queue">
+                          ${queueText}
+                      </button>
                     </div>
-                </div>
-            </div>`;
+                  </div>
+                </div>`;
   modalDescription.innerHTML = markup;
   viewModal(true);
   window.addEventListener('keyup', escapeClose);
@@ -131,6 +136,7 @@ export const modalMovie = async e => {
   btn.queue = document.querySelector('[data-btn="queue"]');
   btn.watched.addEventListener('click', e => addToLocalStorage(id, 'watched'));
   btn.queue.addEventListener('click', e => addToLocalStorage(id, 'queue'));
+  stopTrackingMousePosition();
 };
 
 const findLi = target => {
