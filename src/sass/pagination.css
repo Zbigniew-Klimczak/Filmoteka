@@ -1,0 +1,57 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 40px 20px;
+}
+.pagination__button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  padding-top: 3px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.17;
+  background-color: inherit;
+  cursor: pointer;
+}
+.pagination__button:hover,
+.pagination__button :focus {
+  border: 1px solid #ff6b08;
+}
+.pagination__button--actual {
+  background-color: #ff6b08;
+  color: #fff;
+}
+.pagination__button--next {
+  background-color: #f7f7f7;
+  background-image: url(../images/arrow-right.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px;
+}
+.pagination__button--previous {
+  background-color: #f7f7f7;
+  background-image: url(../images/arrow-left.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+.pagination__button--hideAbility {
+  display: none;
+}
+.pagination__button--deactive {
+  pointer-events: none;
+}
+.pagination__button--deactive:hover,
+.pagination__button--deactive :focus {
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination__button--hideAbility {
+    display: block;
+  }
+}/*# sourceMappingURL=pagination.css.map */

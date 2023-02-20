@@ -1,5 +1,6 @@
 .movies {
   &__container {
+    min-height: 800px;
     @extend .container;
     padding: 20px 20px 40px 20px;
   }
@@ -68,4 +69,5 @@
   .movie {
     flex-basis: calc((100% - 30px * (3 - 1)) / 3);
   }
+ 
 }
