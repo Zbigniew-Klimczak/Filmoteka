@@ -20,14 +20,16 @@
 }
 
 .modal__button {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: -240px;
   background: none;
   border:none;
+  cursor: pointer;
 }
 
 .modal__popup {
+  position: relative;
   background-color: #fff;
   padding:35px;
 }
