@@ -26,3 +26,8 @@ img {
   width: 60px;
   display: none;
 }
+.noScroll {
+  position: static;
+  height: auto;
+  overflow: hidden;
+}

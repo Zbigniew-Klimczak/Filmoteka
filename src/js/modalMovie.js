@@ -3,6 +3,7 @@ import { API_KEY } from './apiKey';
 import { moviesStorage } from './localStorage';
 import { trackMousePosition, stopTrackingMousePosition } from './loader';
 
+const body = document.querySelector('body');
 const overlay = document.querySelector('.overlay');
 const modalWindow = document.querySelector('.modal__window');
 const closeButton = document.querySelector('.modal__button-close');
@@ -167,11 +168,11 @@ const clickClose = e => {
 
 export const viewModal = isShow => {
   if (isShow) {
+    body.classList.add('noScroll');
     overlay.classList.remove('overlay--is-hidden');
-    overlay.classList.add('noscroll');
     return;
   }
-  overlay.classList.remove('noscroll');
+  body.classList.remove('noScroll');
   overlay.classList.add('overlay--is-hidden');
   btn.watched.removeEventListener('click', addToLocalStorage);
   btn.queue.removeEventListener('click', addToLocalStorage);
