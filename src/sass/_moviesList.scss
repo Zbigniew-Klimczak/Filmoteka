@@ -27,6 +27,7 @@
     box-shadow: 0 0 20px -5px rgb(255, 116, 2);
     transform: scale(1.05);
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 5px;
   }
 
   &__img {
@@ -41,10 +42,14 @@
     font-weight: inherit;
     line-height: 16px;
     text-transform: uppercase;
+    padding-left: 5px;
+    padding-bottom: 5px;
   }
   &__info {
     display: flex;
     gap: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
   }
   &__detail {
     color: #ff6b08;
