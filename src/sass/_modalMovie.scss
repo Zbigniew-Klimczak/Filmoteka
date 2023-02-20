@@ -7,11 +7,10 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
-  overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
   transition: visibility 250ms ease-in-out, opacity 250ms ease-in-out;
+  overflow: scroll;
 
   &--is-hidden {
     visibility: hidden;
@@ -22,9 +21,6 @@
     display: flex;
     width: 100vw;
   }
-}
-.noscroll {
-  overflow: hidden;
 }
 .modal__window {
   position: relative;

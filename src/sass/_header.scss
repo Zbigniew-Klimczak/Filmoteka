@@ -33,6 +33,12 @@
     align-items: center;
     border-bottom: 1px solid #fff;
     margin-top: 38px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover,
+    :focus {
+      border-color: #ff6b08;
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
   &__error {
     margin-top: 22px;
@@ -85,6 +91,7 @@
     line-height: 1.17;
     text-transform: uppercase;
     color: #fff;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &--mark {
       position: relative;
     }
@@ -100,6 +107,11 @@
       border-radius: 2px;
       cursor: default;
       pointer-events: none;
+    }
+    &:hover,
+    :focus {
+      color: #ff6b08;
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 }
@@ -125,10 +137,18 @@
     border: none;
     cursor: pointer;
     padding: 5px 5px 2px 5px;
+    &:hover .search__svg,
+    :focus .search__svg {
+      stroke: #ff6b08;
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
   &__svg {
+    fill: none;
+    stroke: #fff;
     width: 12px;
     height: 12px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 .watched-button,
@@ -143,7 +163,16 @@
   padding: 14px 36px 12px;
   border: 1px solid #fff;
   border-radius: 5px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  &:hover,
+  &:focus {
+    transform: scale(1);
+    border-color: #ff6b01;
+    background-color: #ff6b01;
+    box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 .watched-button--active,
 .queue-button--active {
