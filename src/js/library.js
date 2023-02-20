@@ -58,6 +58,7 @@ let fetchQueue = () => {
 };
 
 fetchLibrary();
+
 queueBtn.addEventListener('click', fetchQueue);
 watchedBtn.addEventListener('click', fetchLibrary);
 moviesList.addEventListener('click', modalMovie);

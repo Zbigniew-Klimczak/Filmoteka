@@ -68,7 +68,6 @@ searchBtn.addEventListener('click', event => {
 
 pagination.addEventListener('click', evt => {
   evt.preventDefault;
-
   if (evt.target.classList.contains('pagination__button')) {
     if (
       evt.target.classList.contains('pagination__button--next') ||
