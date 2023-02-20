@@ -68,7 +68,7 @@ searchBtn.addEventListener('click', event => {
 
 pagination.addEventListener('click', evt => {
   evt.preventDefault;
-  trackMousePosition();
+
   if (evt.target.classList.contains('pagination__button')) {
     if (
       evt.target.classList.contains('pagination__button--next') ||
@@ -82,6 +82,7 @@ pagination.addEventListener('click', evt => {
   }
   if (evt.target.classList.contains('pagination__button')) {
     window.scrollTo(0, 0);
+    trackMousePosition();
     if (movies.dataset.searchquery === undefined)
       fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
         api_key: API_KEY,
