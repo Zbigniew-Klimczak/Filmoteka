@@ -15,9 +15,12 @@
     line-height: 1.17;
     background-color: inherit;
     cursor: pointer;
+    border: 1px solid #fff;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover,
     :focus {
       border: 1px solid #ff6b08;
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
     &--actual {
       background-color: #ff6b08;
@@ -30,13 +33,12 @@
       background-position: center;
       margin-left: 10px;
       &:hover,
-  &:focus {
-    transform: scale(1);
-    border-color: #ff6b01;
-    background-color: #ff6b01;
-    box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
+      &:focus {
+        border-color: #ff6b01;
+        background-color: #ff6b01;
+        box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
+        transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
     }
     &--previous {
       background-color: #f7f7f7;
@@ -45,13 +47,12 @@
       background-position: center;
       margin-right: 10px;
       &:hover,
-  &:focus {
-    transform: scale(1);
-    border-color: #ff6b01;
-    background-color: #ff6b01;
-    box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
+      &:focus {
+        border-color: #ff6b01;
+        background-color: #ff6b01;
+        box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
+        transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
     }
     &--hideAbility {
       display: none;
