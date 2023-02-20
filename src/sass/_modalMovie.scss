@@ -207,7 +207,7 @@
 
   &:hover,
   &:focus {
-    transform: scale(1);
+    transform: scale(1.05);
     border-color: #ff6b01;
     background-color: #ff6b01;
     box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
@@ -215,7 +215,7 @@
   }
 
   @media screen and (max-width: 1279px) {
-    width: 125px;
+    width: 117px;
   }
   @media screen and (min-width: 1280px) {
     width: 136px;
