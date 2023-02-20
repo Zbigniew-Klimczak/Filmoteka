@@ -29,6 +29,14 @@
       background-repeat: no-repeat;
       background-position: center;
       margin-left: 10px;
+      &:hover,
+  &:focus {
+    transform: scale(1);
+    border-color: #ff6b01;
+    background-color: #ff6b01;
+    box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
     }
     &--previous {
       background-color: #f7f7f7;
@@ -36,6 +44,14 @@
       background-repeat: no-repeat;
       background-position: center;
       margin-right: 10px;
+      &:hover,
+  &:focus {
+    transform: scale(1);
+    border-color: #ff6b01;
+    background-color: #ff6b01;
+    box-shadow: 4px 4px 8px rgba(255, 107, 1, 0.6);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
     }
     &--hideAbility {
       display: none;
