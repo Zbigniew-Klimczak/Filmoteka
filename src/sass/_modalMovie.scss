@@ -11,7 +11,7 @@
   z-index: 100;
   transition: visibility 250ms ease-in-out, opacity 250ms ease-in-out;
   overflow: scroll;
-
+  backdrop-filter: blur(10px);
   &--is-hidden {
     visibility: hidden;
     opacity: 0;
