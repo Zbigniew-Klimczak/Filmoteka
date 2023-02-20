@@ -14,7 +14,9 @@ let btn = {
 };
 
 export const modalMovie = async e => {
-  trackMousePosition();
+  if (e.target.classList.contains('movie')) {
+    trackMousePosition();
+  }
   if (e.target === e.currentTarget) {
     return;
   }
