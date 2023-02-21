@@ -29,7 +29,7 @@ window.onload = () => {
       paginationRender(response.page, response.total_pages);
     });
     // ----------------------------
-  }, 0);
+  }, 2000);
   // ------------------------------
 };
 
