@@ -1,11 +1,11 @@
 {
-  "name": "parcel-project-template",
+  "name": "Filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Zbigniew-Klimczak.github.io/projekt-grupa-1",
+  "homepage": "https://Zbigniew-Klimczak.github.io/Filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /projekt-grupa-1/"
+    "build": "parcel build src/*.html --public-url /Filmoteka/"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/goitacademy/Filmoteka/issues"
   },
   "dependencies": {
     "lodash": "^4.17.21",
