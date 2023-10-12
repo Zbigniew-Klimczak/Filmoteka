@@ -43,11 +43,12 @@ let fetchLibrary = () => {
           for (let i = 0; i < genres.length; i++) {
             movieGenres.push(genres[i].name);
           }
-          stopLoader();
+
           displayMovieCard(movie, movieGenres);
         });
       }
     }
+    stopLoader();
     paginationRender(actualPage, totalPages);
   }
 };
