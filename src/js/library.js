@@ -79,11 +79,12 @@ let fetchQueue = () => {
           for (let i = 0; i < genres.length; i++) {
             movieGenres.push(genres[i].name);
           }
-          stopLoader();
+
           displayMovieCard(movie, movieGenres);
         });
       }
     }
+    stopLoader();
     paginationRender(actualPage, totalPages);
   }
 };
@@ -158,8 +159,8 @@ pagination.addEventListener('click', evt => {
           });
         }
       }
-      paginationRender(+actualPage, +totalPages);
       stopLoader();
+      paginationRender(+actualPage, +totalPages);
     }
   }
 });
