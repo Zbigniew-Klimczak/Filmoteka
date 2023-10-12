@@ -2,7 +2,7 @@ import { API_KEY } from './apiKey';
 import { closeModal, modalMovie } from './modalMovie';
 import { fetchJsonResponse } from './responseJsonFetch';
 import { displayMovieCard } from './moviesListRender';
-import { trackMousePosition, stopTrackingMousePosition } from './loader';
+import { startLoader, stopLoader } from './loader';
 import { paginationRender, paginationDestroy } from './pagination';
 
 const moviesList = document.querySelector('.movies__list');
@@ -23,7 +23,7 @@ let fetchLibrary = () => {
   watchedBtn.classList.add('watched-button--active');
   paginationDestroy();
   if (watchedLength !== 0) {
-    trackMousePosition();
+    startLoader();
     watchedLength = JSON.parse(localStorage.getItem('movies-watched')).length;
     actualPage = 1;
     startId = 0;
@@ -48,7 +48,7 @@ let fetchLibrary = () => {
       }
     }
     paginationRender(actualPage, totalPages);
-    stopTrackingMousePosition();
+    stopLoader();
   }
 };
 
@@ -59,7 +59,7 @@ let fetchQueue = () => {
   queueBtn.classList.add('queue-button--active');
   paginationDestroy();
   if (queueLength !== 0) {
-    trackMousePosition();
+    startLoader();
     queueLength = JSON.parse(localStorage.getItem('movies-queue')).length;
     actualPage = 1;
     startId = 0;
@@ -84,7 +84,7 @@ let fetchQueue = () => {
       }
     }
     paginationRender(actualPage, totalPages);
-    stopTrackingMousePosition();
+    stopLoader();
   }
 };
 
@@ -104,7 +104,7 @@ pagination.addEventListener('click', evt => {
   if (evt.target.classList.contains('pagination__button')) {
     window.scrollTo(0, 0);
     if (moviesList.dataset.library === 'watched') {
-      trackMousePosition();
+      startLoader();
       moviesList.innerHTML = '';
       paginationDestroy();
       let parsedWatched = JSON.parse(localStorage.getItem('movies-watched'));
@@ -130,10 +130,10 @@ pagination.addEventListener('click', evt => {
         }
       }
       paginationRender(+actualPage, +totalPages);
-      stopTrackingMousePosition();
+      stopLoader();
     }
     if (moviesList.dataset.library === 'queue') {
-      trackMousePosition();
+      startLoader();
       moviesList.innerHTML = '';
       paginationDestroy();
       let parsedQueue = JSON.parse(localStorage.getItem('movies-queue'));
@@ -159,7 +159,7 @@ pagination.addEventListener('click', evt => {
         }
       }
       paginationRender(+actualPage, +totalPages);
-      stopTrackingMousePosition();
+      stopLoader();
     }
   }
 });
