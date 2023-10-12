@@ -43,7 +43,6 @@ let fetchLibrary = () => {
           for (let i = 0; i < genres.length; i++) {
             movieGenres.push(genres[i].name);
           }
-
           displayMovieCard(movie, movieGenres);
         });
       }
