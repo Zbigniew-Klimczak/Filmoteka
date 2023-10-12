@@ -43,12 +43,12 @@ let fetchLibrary = () => {
           for (let i = 0; i < genres.length; i++) {
             movieGenres.push(genres[i].name);
           }
+          stopLoader();
           displayMovieCard(movie, movieGenres);
         });
       }
     }
     paginationRender(actualPage, totalPages);
-    stopLoader();
   }
 };
 
@@ -79,12 +79,12 @@ let fetchQueue = () => {
           for (let i = 0; i < genres.length; i++) {
             movieGenres.push(genres[i].name);
           }
+          stopLoader();
           displayMovieCard(movie, movieGenres);
         });
       }
     }
     paginationRender(actualPage, totalPages);
-    stopLoader();
   }
 };
 

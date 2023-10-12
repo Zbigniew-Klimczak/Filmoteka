@@ -1,7 +1,6 @@
 import { fetchJsonResponse } from './responseJsonFetch';
 import { API_KEY } from './apiKey';
 import { moviesStorage } from './localStorage';
-import { startLoader, stopLoader } from './loader';
 
 const body = document.querySelector('body');
 const overlay = document.querySelector('.overlay');
@@ -15,7 +14,6 @@ let btn = {
 
 export const modalMovie = async e => {
   if (e.target.classList.contains('movie')) {
-    // startLoader();
   }
   if (e.target === e.currentTarget) {
     return;
@@ -139,7 +137,6 @@ export const modalMovie = async e => {
   btn.queue = document.querySelector('[data-btn="queue"]');
   btn.watched.addEventListener('click', e => addToLocalStorage(id, 'watched'));
   btn.queue.addEventListener('click', e => addToLocalStorage(id, 'queue'));
-  // stopLoader();
 };
 
 const findLi = target => {

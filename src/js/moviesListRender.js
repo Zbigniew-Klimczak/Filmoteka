@@ -1,5 +1,6 @@
 import { fetchJsonResponse } from './responseJsonFetch';
 import { API_KEY } from './apiKey';
+import { stopLoader } from './loader';
 
 const moviesList = document.querySelector('.movies__list');
 
@@ -63,9 +64,12 @@ export function displayMovieCard(movie, movieGenres) {
 export async function moviesListRender(movies) {
   try {
     moviesList.innerHTML = '';
+
     const genresList = await getGenresList();
+    stopLoader();
     movies.forEach(movie => {
       const movieGenres = getMoviesGenres(movie, genresList);
+
       displayMovieCard(movie, movieGenres);
     });
   } catch (error) {

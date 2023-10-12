@@ -3,7 +3,7 @@ import { fetchJsonResponse } from './responseJsonFetch';
 import { moviesListRender } from './moviesListRender';
 import { paginationRender, paginationDestroy } from './pagination';
 import { closeModal, modalMovie } from './modalMovie';
-import { startLoader, stopLoader } from './loader';
+import { startLoader } from './loader';
 
 const searchBtn = document.querySelector('.search__button');
 const searchInput = document.querySelector('.search__input');
@@ -15,26 +15,20 @@ let actualPage = 1;
 
 window.onload = () => {
   startLoader();
-  // setTimeout to check loader work
-  setTimeout(() => {
-    // -----------------------------
-    fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
-      api_key: API_KEY,
-      page: actualPage,
-    }).then(response => {
-      stopLoader();
-      paginationDestroy();
-      actualPage = response.page;
-      moviesListRender(response.results);
-      paginationRender(response.page, response.total_pages);
-    });
-    // ----------------------------
-  }, 1000);
-  // ------------------------------
+  fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
+    api_key: API_KEY,
+    page: actualPage,
+  }).then(response => {
+    paginationDestroy();
+    actualPage = response.page;
+    moviesListRender(response.results);
+    paginationRender(response.page, response.total_pages);
+  });
 };
 
 searchBtn.addEventListener('click', event => {
   event.preventDefault();
+  moviesGallery.innerHTML = '';
   startLoader();
   actualPage = 1;
   movies.dataset.searchquery = searchInput.value;
@@ -50,7 +44,7 @@ searchBtn.addEventListener('click', event => {
         .querySelector('.header__error')
         .classList.remove('header__error--hidden');
     }
-    stopLoader();
+
     paginationDestroy();
     actualPage = response.page;
     moviesListRender(response.results);
@@ -81,13 +75,13 @@ pagination.addEventListener('click', evt => {
   }
   if (evt.target.classList.contains('pagination__button')) {
     window.scrollTo(0, 0);
+    moviesGallery.innerHTML = '';
     startLoader();
     if (movies.dataset.searchquery === undefined)
       fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
         api_key: API_KEY,
         page: actualPage,
       }).then(response => {
-        stopLoader();
         paginationDestroy();
         actualPage = response.page;
         moviesListRender(response.results);
@@ -106,7 +100,7 @@ pagination.addEventListener('click', evt => {
             .querySelector('.header__error')
             .classList.remove('header__error--hidden');
         }
-        stopLoader();
+
         paginationDestroy();
         actualPage = response.page;
         moviesListRender(response.results);
