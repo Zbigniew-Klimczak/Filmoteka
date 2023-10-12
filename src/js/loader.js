@@ -1,21 +1,20 @@
-const loader = document.querySelector('#loader');
-const body = document.querySelector('body');
-let mouseMoveListener;
+const movieContainer = document.querySelector('.movies__container');
 
-export const trackMousePosition = () => {
-  mouseMoveListener = event => {
-    body.style.cursor = 'none';
-    loader.style.left = `${event.clientX}px`;
-    loader.style.top = `${event.clientY}px`;
-    loader.style.display = 'block';
-  };
-  document.addEventListener('mousemove', mouseMoveListener);
+const loaderHtml = `<div class="dot-spinner">
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+</div>`;
+
+export const startLoader = () => {
+  movieContainer.insertAdjacentHTML('beforeend', loaderHtml);
 };
-export const stopTrackingMousePosition = () => {
-  body.style.cursor = 'auto';
-  document.removeEventListener('mousemove', mouseMoveListener);
-  loader.style.display = 'none';
+export const stopLoader = () => {
+  const loaderContainer = document.querySelector('.dot-spinner');
+  loaderContainer.remove();
 };
-{
-  trackMousePosition, stopTrackingMousePosition;
-}

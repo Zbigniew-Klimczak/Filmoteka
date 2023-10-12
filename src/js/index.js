@@ -3,7 +3,7 @@ import { fetchJsonResponse } from './responseJsonFetch';
 import { moviesListRender } from './moviesListRender';
 import { paginationRender, paginationDestroy } from './pagination';
 import { closeModal, modalMovie } from './modalMovie';
-import { trackMousePosition, stopTrackingMousePosition } from './loader';
+import { startLoader, stopLoader } from './loader';
 
 const searchBtn = document.querySelector('.search__button');
 const searchInput = document.querySelector('.search__input');
@@ -14,7 +14,7 @@ const moviesGallery = document.querySelector('.movies__list');
 let actualPage = 1;
 
 window.onload = () => {
-  trackMousePosition();
+  startLoader();
   // setTimeout to check loader work
   setTimeout(() => {
     // -----------------------------
@@ -22,20 +22,20 @@ window.onload = () => {
       api_key: API_KEY,
       page: actualPage,
     }).then(response => {
-      stopTrackingMousePosition();
+      stopLoader();
       paginationDestroy();
       actualPage = response.page;
       moviesListRender(response.results);
       paginationRender(response.page, response.total_pages);
     });
     // ----------------------------
-  }, 2000);
+  }, 1000);
   // ------------------------------
 };
 
 searchBtn.addEventListener('click', event => {
   event.preventDefault();
-  trackMousePosition();
+  startLoader();
   actualPage = 1;
   movies.dataset.searchquery = searchInput.value;
   fetchJsonResponse('https://api.themoviedb.org/3/search/movie', {
@@ -50,7 +50,7 @@ searchBtn.addEventListener('click', event => {
         .querySelector('.header__error')
         .classList.remove('header__error--hidden');
     }
-    stopTrackingMousePosition();
+    stopLoader();
     paginationDestroy();
     actualPage = response.page;
     moviesListRender(response.results);
@@ -81,13 +81,13 @@ pagination.addEventListener('click', evt => {
   }
   if (evt.target.classList.contains('pagination__button')) {
     window.scrollTo(0, 0);
-    trackMousePosition();
+    startLoader();
     if (movies.dataset.searchquery === undefined)
       fetchJsonResponse('https://api.themoviedb.org/3/trending/movie/day', {
         api_key: API_KEY,
         page: actualPage,
       }).then(response => {
-        stopTrackingMousePosition();
+        stopLoader();
         paginationDestroy();
         actualPage = response.page;
         moviesListRender(response.results);
@@ -106,7 +106,7 @@ pagination.addEventListener('click', evt => {
             .querySelector('.header__error')
             .classList.remove('header__error--hidden');
         }
-        stopTrackingMousePosition();
+        stopLoader();
         paginationDestroy();
         actualPage = response.page;
         moviesListRender(response.results);
