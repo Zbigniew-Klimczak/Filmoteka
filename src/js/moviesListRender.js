@@ -34,7 +34,7 @@ function getMoviesGenres(movie, genresList) {
 export function displayMovieCard(movie, movieGenres) {
   let moviePoster;
   if (movie.poster_path === null) {
-    moviePoster = 'https://europix.cc/no-poster.png';
+    moviePoster = 'https://movieeo.com/no-poster.png';
   } else {
     moviePoster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   }

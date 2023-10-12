@@ -1,7 +1,7 @@
 {
-  "name": "parcel-project-template",
+  "name": "Filmoteka",
   "version": "2.0.0",
-  "description": "",
+  "description": "Searching movies app.",
   "homepage": "https://Zbigniew-Klimczak.github.io/Filmoteka",
   "scripts": {
     "start": "parcel src/*.html",

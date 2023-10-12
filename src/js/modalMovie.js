@@ -56,7 +56,7 @@ export const modalMovie = async e => {
 
   let moviePoster;
   if (movie.poster_path === null) {
-    moviePoster = 'https://europix.cc/no-poster.png';
+    moviePoster = 'https://movieeo.com/no-poster.png';
   } else {
     moviePoster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   }
